@@ -1,5 +1,5 @@
 import { AppBar, Toolbar } from '@material-ui/core';
-import '../../styles/LoginHeader.css';
+import '../../styles/Header.css';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 import React from 'react';
@@ -23,7 +23,6 @@ export default function Header() {
   const getMenuButtons = () => {
     return (
       <div className='loginHeader'>
-        <Button onClick={handleSignUp} className='buttonImage'></Button>
         <Button onClick={handleSignUp} className='buttonHeader'>
           Sign Up
         </Button>
