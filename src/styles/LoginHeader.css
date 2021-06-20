@@ -1,0 +1,18 @@
+@media all and (min-width: 480px) {
+  .loginHeader {
+    background-color: #007bff;
+    color: #007bff;
+  }
+  .container {
+    margin-bottom: 100px;
+  }
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+  .buttonHeader {
+    margin-left: 10px;
+    background-color: #007bff;
+    height: match-parent;
+  }
+}
