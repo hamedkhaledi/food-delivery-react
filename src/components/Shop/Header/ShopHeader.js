@@ -45,13 +45,18 @@ export default function Header(props) {
                 name='search'
                 id='search-field'
                 placeholder='...'
+                value={props.search}
+                onChange={(e) => props.setSearch(e.target.value)}
               />
             </div>
           </form>
-          <button class='btn btn-outline-success' onClick={props.handleProfile}>
+          <button class='btn btn-outline-danger m-1' onClick={props.handleSignout}>
+            sign out
+          </button>
+          <button class='btn btn-outline-success m-1' onClick={props.handleProfile}>
             profile
           </button>
-          <button class='btn btn-outline-danger' onClick={props.handleCart}>
+          <button class='btn btn-outline-warning m-1' onClick={props.handleCart}>
             Cart
           </button>
         </div>

@@ -4,30 +4,36 @@ import { useHistory } from 'react-router-dom';
 import FoodCart from './FoodCart';
 import ShopHeader from './Header/ShopHeader';
 import Food from '../../Model/Food';
+
 const Shop = (props) => {
   const history = useHistory();
   const location = useLocation();
-  let orderedFoods = location.state.orderedFoods;
-  const currentNumber = location.state.currentNumber;
-  console.log(location);
+  const [search, setSearch] = useState('');
+  let currentUser = location.state.User;
+
+  // const currentNumber = location.state.currentNumber;
+  // let orderStatus = location.state.orderStatus;
+
   let imgUrl =
     'https://media.istockphoto.com/photos/square-crust-flatbread-pizza-picture-id1032111568?s=612x612';
-  let food1 = new Food('1', 'pizza', 'rs1', '10', imgUrl);
-  let food2 = new Food('2', 'pizza1', 'rs2', '20', imgUrl);
+  let food1 = new Food('1', 'laz', 'rs1', '10', imgUrl);
+  let food2 = new Food('2', 'laz1', 'rs2', '20', imgUrl);
   let food3 = new Food('3', 'pizza2', 'rs3', '30', imgUrl);
   let food4 = new Food('4', 'pizza3', 'rs4', '40', imgUrl);
-  let foods = [food1, food2, food3, food4];
+  let food5 = new Food('4', 'pizza4', 'rs4', '40', imgUrl);
+  let foods = [food1, food2, food3, food4, food5];
 
   function onAddFood(food) {
-    orderedFoods.push(food);
-    console.log(orderedFoods);
+    //TODO
   }
 
   function handleProfile() {
     let path = '/user';
     history.push({
       pathname: path,
-      state: { currentNumber: currentNumber, orderedFoods: orderedFoods }
+      state: {
+        state: { currentUser: currentUser }
+      }
     });
   }
 
@@ -35,7 +41,18 @@ const Shop = (props) => {
     let path = '/cart';
     history.push({
       pathname: path,
-      state: { currentNumber: currentNumber, orderedFoods: orderedFoods }
+      state: {
+        state: { currentUser: currentUser }
+      }
+    });
+  }
+  function handleSignout() {
+    let path = '/login';
+    history.push({
+      pathname: path,
+      state: {
+        state: { currentUser: currentUser }
+      }
     });
   }
 
@@ -44,6 +61,9 @@ const Shop = (props) => {
       <ShopHeader
         handleCart={() => handleCart()}
         handleProfile={() => handleProfile()}
+        handleSignout={() => handleSignout()}
+        search={search}
+        setSearch={setSearch}
       />
       {/* <h1>{location.state.currentNumber}</h1> */}
       <section
@@ -55,7 +75,10 @@ const Shop = (props) => {
             <div class='u-repeater u-repeater-1'>
               {foods.map((food, index) => {
                 return (
-                  <FoodCart food={food} onAddFood={() => onAddFood(food)} />
+                  (food.name.includes(search) ||
+                    food.restaurant.includes(search)) && (
+                    <FoodCart food={food} onAddFood={() => onAddFood(food)} />
+                  )
                 );
               })}
             </div>

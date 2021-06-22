@@ -6,6 +6,7 @@ import Shop from '../components/Shop/Shop';
 import User from '../components/User/User';
 import FoodCart from '../components/Shop/FoodCart';
 import Cart from '../components/Shop/Cart';
+import Status from '../components/Shop/Status';
 
 export default function Routes() {
   return (
@@ -28,6 +29,9 @@ export default function Routes() {
         </Route>
         <Route path='/cart'>
           <Cart />
+        </Route>
+        <Route path='/status'>
+          <Status />
         </Route>
         <Route path=''>
           <Login />

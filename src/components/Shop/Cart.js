@@ -9,14 +9,13 @@ import CartHeader from './Header/CartHeader';
 const Cart = (props) => {
   const history = useHistory();
   const location = useLocation();
-  let orderedFoods = location.state.orderedFoods;
-  const currentNumber = location.state.currentNumber;
+  let currentUser = location.state.User;
 
   function handleShop() {
     let path = '/shop';
     history.push({
       pathname: path,
-      state: { currentNumber: currentNumber, orderedFoods: orderedFoods }
+      state: { currentUser: currentUser }
     });
   }
 
@@ -34,7 +33,7 @@ const Cart = (props) => {
                 <i class='fa fa-angle-down'></i>
               </div>
             </div>
-            {orderedFoods.map((food, index) => {
+            {currentUser.order.map((food, index) => {
               return <CartItem food={food} />;
             })}
             <div class='d-flex flex-row align-items-center mt-3 p-2 bg-white rounded'>

@@ -1,0 +1,132 @@
+@font-face {
+  font-family: Aristotelica;
+  src: url(https://res.cloudinary.com/dxfq3iotg/raw/upload/v1586014780/BBBootstrap/fonts/Aristotelica-Display-Regular-trial.ttf);
+}
+
+.status-container {
+  background: rgb(233, 9, 84);
+  height: 200vh;
+  width: 200vh;
+  vertical-align: middle;
+  display: flex;
+  font-family: Aristotelica;
+  letter-spacing: 3px;
+}
+
+.card {
+  border-radius: unset;
+  margin: auto;
+  max-width: 800px;
+  padding: 5vh 23vh 1vh;
+  align-items: center;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 2vh;
+    width: 90%;
+  }
+}
+
+@media (width: 1024px) {
+  .card {
+    padding: 5vh;
+    width: 90%;
+  }
+}
+
+#heading {
+  color: rgb(233, 9, 84);
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+@media (max-width: 767px) {
+  #heading h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  #heading h1 {
+    font-size: 1.3rem;
+  }
+}
+
+#sub-heading {
+  font-size: 3vh;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+#left {
+  margin-right: auto;
+  font-weight: 600;
+  font-size: 2.5vh;
+}
+
+.progress_b .col-2 {
+  text-align: right;
+  width: fit-content;
+  padding: 0;
+  margin: 0;
+}
+
+#right {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(233, 9, 84);
+  font-weight: 600;
+  font-size: 2.5vh;
+}
+
+.progress {
+  height: 12px;
+  border-radius: 2px;
+  overflow: visible;
+  margin: 4vh 0;
+}
+
+.progress-bar {
+  /* color: rgb(233, 9, 84); */
+  background-color: rgb(233, 9, 84);
+  overflow: visible;
+}
+
+.progress_b {
+  margin: 14vh 0 9vh;
+}
+
+@media (max-width: 768px) {
+  .progress_b {
+    margin: 10vh 0 7vh;
+  }
+}
+
+#footer {
+  color: rgb(233, 9, 84);
+  font-size: 3vh;
+  margin-top: 8vh;
+  font-weight: 600;
+}
+
+.progress0 {
+  width: 0%;
+}
+
+.progress1 {
+  width: 25%;
+}
+
+.progress2 {
+  width: 50%;
+}
+
+.progress3 {
+  width: 75%;
+}
+
+.progress4 {
+  width: 75%;
+}
