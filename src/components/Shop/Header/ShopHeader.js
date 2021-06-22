@@ -1,17 +1,7 @@
-import { AppBar, Toolbar } from '@material-ui/core';
 import '../../../styles/ShopHeader.css';
-import Button from 'react-bootstrap/Button';
-import { useHistory } from 'react-router-dom';
 import React from 'react';
 
 export default function Header(props) {
-  const history = useHistory();
-
-  function handleManagement(event) {
-    let path = '/management';
-    history.push(path);
-  }
-
   return (
     <div class='header'>
       <nav class='navbar navbar-expand-sm bg-dark navbar-dark fixed-top '>
@@ -36,7 +26,7 @@ export default function Header(props) {
           </ul>
           <form class='form-inline mr-auto' target='_self'>
             <div class='form-group'>
-              <label for='search-field'>
+              <label>
                 <i class='fa fa-search'></i>
               </label>
               <input
@@ -50,13 +40,28 @@ export default function Header(props) {
               />
             </div>
           </form>
-          <button class='btn btn-outline-danger m-1' onClick={props.handleSignout}>
+          <button
+            class='btn btn-outline-light m-1'
+            onClick={props.handleStatus}
+          >
+            Status
+          </button>
+          <button
+            class='btn btn-outline-danger m-1'
+            onClick={props.handleSignout}
+          >
             sign out
           </button>
-          <button class='btn btn-outline-success m-1' onClick={props.handleProfile}>
+          <button
+            class='btn btn-outline-success m-1'
+            onClick={props.handleProfile}
+          >
             profile
           </button>
-          <button class='btn btn-outline-warning m-1' onClick={props.handleCart}>
+          <button
+            class='btn btn-outline-warning m-1'
+            onClick={props.handleCart}
+          >
             Cart
           </button>
         </div>

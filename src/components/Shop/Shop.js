@@ -9,8 +9,8 @@ const Shop = (props) => {
   const history = useHistory();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  let currentUser = location.state.User;
-
+  let currentUser = location.state.currentUser;
+  console.log('shop : ' + currentUser.name);
   // const currentNumber = location.state.currentNumber;
   // let orderStatus = location.state.orderStatus;
 
@@ -31,9 +31,7 @@ const Shop = (props) => {
     let path = '/user';
     history.push({
       pathname: path,
-      state: {
-        state: { currentUser: currentUser }
-      }
+      state: { currentUser: currentUser }
     });
   }
 
@@ -41,18 +39,14 @@ const Shop = (props) => {
     let path = '/cart';
     history.push({
       pathname: path,
-      state: {
-        state: { currentUser: currentUser }
-      }
+      state: { currentUser: currentUser }
     });
   }
   function handleSignout() {
     let path = '/login';
     history.push({
       pathname: path,
-      state: {
-        state: { currentUser: currentUser }
-      }
+      state: { currentUser: currentUser }
     });
   }
 
@@ -77,7 +71,11 @@ const Shop = (props) => {
                 return (
                   (food.name.includes(search) ||
                     food.restaurant.includes(search)) && (
-                    <FoodCart food={food} onAddFood={() => onAddFood(food)} />
+                    <FoodCart
+                      key={index}
+                      food={food}
+                      onAddFood={() => onAddFood(food)}
+                    />
                   )
                 );
               })}

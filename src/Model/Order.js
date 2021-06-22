@@ -1,8 +1,8 @@
 class Order {
-  constructor(foods, startTime, endTime, status) {
+  constructor(foods, startTime, preparingTime, status) {
     this.foods = foods;
     this.startTime = startTime;
-    this.EndTime = endTime;
+    this.preparingTime = preparingTime;
     this.status = status;
   }
 }

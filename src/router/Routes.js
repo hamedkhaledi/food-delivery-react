@@ -7,7 +7,7 @@ import User from '../components/User/User';
 import FoodCart from '../components/Shop/FoodCart';
 import Cart from '../components/Shop/Cart';
 import Status from '../components/Shop/Status';
-
+import MangerSignUp from '../components/Management/ManagerSignUp';
 export default function Routes() {
   return (
     <BrowserRouter>
@@ -33,7 +33,10 @@ export default function Routes() {
         <Route path='/status'>
           <Status />
         </Route>
-        <Route path=''>
+        <Route path='/management'>
+          <MangerSignUp />
+        </Route>
+        <Route path='/'>
           <Login />
         </Route>
       </Switch>

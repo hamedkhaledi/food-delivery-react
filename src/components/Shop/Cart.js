@@ -9,7 +9,7 @@ import CartHeader from './Header/CartHeader';
 const Cart = (props) => {
   const history = useHistory();
   const location = useLocation();
-  let currentUser = location.state.User;
+  let currentUser = location.state.currentUser;
 
   function handleShop() {
     let path = '/shop';

@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom';
 const FoodCart = (props) => {
   const history = useHistory();
   const location = useLocation();
-  console.log(location);
 
   return (
     <div class='u-container-style u-list-item u-repeater-item u-video-cover u-white u-list-item-3'>

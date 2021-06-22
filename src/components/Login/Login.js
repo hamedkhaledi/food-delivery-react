@@ -6,18 +6,17 @@ import '../../styles/Login.css';
 import { useHistory } from 'react-router-dom';
 import LoginHeader from './LoginHeader';
 import User from '../../Model/User';
-import Order from '../../Model/Order';
 
 export default function Login() {
   const history = useHistory();
   const [number, setNumber] = useState('');
   const [password, setPassword] = useState('');
-
+  const [error, setError] = useState(false);
   function validateForm() {
     return (
       number.length === 11 &&
       number.match(/^[0-9]*$/) &&
-      password.length > 8 &&
+      password.length >= 8 &&
       password.match(/^[A-Za-z0-9]*$/)
     );
   }
@@ -25,45 +24,57 @@ export default function Login() {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ number: number, password: password })
+      body: JSON.stringify({ user: { number: number, password: password } })
     };
-    fetch('', requestOptions)
+    var user = NaN;
+    fetch('http://localhost:8080/login', requestOptions)
       .then((response) => response.json())
       .then((jsonData) => {
-        return new User(
-          jsonData.number,
-          jsonData.password,
-          jsonData.name,
-          jsonData.region,
-          jsonData.address
+        user = new User(
+          jsonData.user.number,
+          jsonData.user.password,
+          jsonData.user.name,
+          jsonData.user.region,
+          jsonData.user.address,
+          [],
+          jsonData.user.credit
         );
+        console.log(user);
+        handleLogin(user);
       })
       .catch((error) => {
-        return NaN;
+        setError(true);
       });
   }
-  function handleSubmit(event) {
+  function handleLogin(user) {
     let path = '/Shop';
+    console.log(user);
+    history.push({
+      pathname: path,
+      state: { currentUser: user }
+    });
+    setError(false);
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
     let user = getUser();
-    if (user !== NaN) {
-      history.push({
-        pathname: path,
-        state: { currentUser: user}
-      });
-    }
+    console.log(user);
   }
 
   return (
-    <div className='Login'>
+    <div class='Login'>
       <LoginHeader />
       <section>
-        <Form onSubmit={handleSubmit}>
+        <Form>
           <Form.Group size='lg' controlId='number'>
             <Form.Label class='text-white'>Number</Form.Label>
             <Form.Control
               autoFocus
               value={number}
-              onChange={(e) => setNumber(e.target.value)}
+              onChange={(e) => {
+                setNumber(e.target.value);
+                setError(false);
+              }}
             />
           </Form.Group>
           <Form.Group size='lg' controlId='password'>
@@ -71,15 +82,20 @@ export default function Login() {
             <Form.Control
               type='password'
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError(false);
+              }}
             />
           </Form.Group>
+          {error && <h5 class='text-danger'>number or password is wrong</h5>}
           <Button
             block
             size='lg'
             variant='success'
             type='submit'
             disabled={!validateForm()}
+            onClick={handleSubmit}
           >
             Login
           </Button>

@@ -8,14 +8,13 @@ import Button from 'react-bootstrap/Button';
 const User = (props) => {
   const history = useHistory();
   const location = useLocation();
-  let orderedFoods = location.state.orderedFoods;
-  const currentNumber = location.state.currentNumber;
-
+  let currentUser = location.state.currentUser;
+  console.log('profile: ' + currentUser);
   function handleShop() {
     let path = '/shop';
     history.push({
       pathname: path,
-      state: { currentNumber: currentNumber, orderedFoods: orderedFoods }
+      state: { currentUser: currentUser }
     });
   }
 
@@ -41,7 +40,7 @@ const User = (props) => {
             </div>
             <div class='col-md-6'>
               <div class='profile-head'>
-                <h5>Name</h5>
+                <h5>{currentUser.name}</h5>
                 <ul class='nav nav-tabs' id='myTab' role='tablist'>
                   <li class='nav-item'>
                     <a
@@ -71,7 +70,7 @@ const User = (props) => {
                         <label>Phone Number</label>
                       </div>
                       <div class='col-md-6'>
-                        <label class='text-primary'>...</label>
+                        <label class='text-primary'>{currentUser.number}</label>
                       </div>
                     </div>
                     <div class='row'>
@@ -79,7 +78,7 @@ const User = (props) => {
                         <label>Region</label>
                       </div>
                       <div class='col-md-6'>
-                        <label class='text-primary'>...</label>
+                        <label class='text-primary'>{currentUser.region}</label>
                       </div>
                     </div>
                     <div class='row'>
@@ -87,7 +86,15 @@ const User = (props) => {
                         <label>Address</label>
                       </div>
                       <div class='col-md-6'>
-                        <label class='text-primary'>...</label>
+                        <label class='text-primary'>{currentUser.address}</label>
+                      </div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-6'>
+                        <label>Credit</label>
+                      </div>
+                      <div class='col-md-6'>
+                        <label class='text-primary'>{currentUser.credit}</label>
                       </div>
                     </div>
                     <div class='row'>
