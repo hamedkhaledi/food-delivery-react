@@ -32,7 +32,7 @@ export default function SignUp() {
       <SignUpHeader />
       <Form onSubmit={handleSubmit}>
         <Form.Group size='lg' controlId='number'>
-          <Form.Label>Number</Form.Label>
+          <Form.Label class='text-white'>Number</Form.Label>
           <Form.Control
             autoFocus
             value={number}
@@ -40,7 +40,7 @@ export default function SignUp() {
           />
         </Form.Group>
         <Form.Group size='lg' controlId='password' required>
-          <Form.Label>Password</Form.Label>
+          <Form.Label class='text-white'>Password</Form.Label>
           <Form.Control
             type='password'
             value={password}
@@ -48,21 +48,21 @@ export default function SignUp() {
           />
         </Form.Group>
         <Form.Group size='lg' controlId='password'>
-          <Form.Label>Name</Form.Label>
+          <Form.Label class='text-white'>Name</Form.Label>
           <Form.Control
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </Form.Group>
         <Form.Group size='lg' controlId='password'>
-          <Form.Label>Region</Form.Label>
+          <Form.Label class='text-white'>Region</Form.Label>
           <Form.Control
             value={region}
             onChange={(e) => setRegion(e.target.value)}
           />
         </Form.Group>
         <Form.Group size='lg' controlId='password'>
-          <Form.Label>Address</Form.Label>
+          <Form.Label class='text-white'>Address</Form.Label>
           <Form.Control
             value={address}
             onChange={(e) => setAddress(e.target.value)}

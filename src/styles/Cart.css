@@ -1,16 +1,7 @@
-@media all and (min-width: 480px) {
-  .Login {
-    padding: 60px 0;
-  }
-
-  .Login form {
-    margin: 0 auto;
-    max-width: 320px;
-  }
-}
-
-body {
-  background-image: url('https://cdn.hipwallpaper.com/i/37/30/0EF75T.jpg'); /* The image used */
+.container-all {
+  height: 100vh;
+  width: 200vh;
+  background-image: url('https://image.freepik.com/free-photo/empty-shopping-trolley-dark-toned-background-with-some-copy-space_94863-1091.jpg'); /* The image used */
   background-color: #cccccc; /* Used if the image is unavailable */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */

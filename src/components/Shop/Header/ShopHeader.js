@@ -1,16 +1,12 @@
 import { AppBar, Toolbar } from '@material-ui/core';
-import '../../styles/Header.css';
+import '../../../styles/ShopHeader.css';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 import React from 'react';
 
-export default function SignUpHeader() {
+export default function Header(props) {
   const history = useHistory();
 
-  function handleLogin(event) {
-    let path = '/login';
-    history.push(path);
-  }
   function handleManagement(event) {
     let path = '/management';
     history.push(path);
@@ -35,19 +31,28 @@ export default function SignUpHeader() {
         <div class='collapse navbar-collapse' id='navcol-1'>
           <ul class='nav navbar-nav'>
             <li class='nav-item' role='presentation'>
-              <button
-                class='btn btn-link text-secondary transparent-button'
-                onClick={handleManagement}
-              >
-                Management
-              </button>
+              Search :
             </li>
           </ul>
-
-          <form class='form-inline mr-auto' target='_self'></form>
-
-          <button class='btn btn-outline-warning' onClick={handleLogin}>
-            Login
+          <form class='form-inline mr-auto' target='_self'>
+            <div class='form-group'>
+              <label for='search-field'>
+                <i class='fa fa-search'></i>
+              </label>
+              <input
+                class='form-control search-field'
+                type='search'
+                name='search'
+                id='search-field'
+                placeholder='...'
+              />
+            </div>
+          </form>
+          <button class='btn btn-outline-success' onClick={props.handleProfile}>
+            profile
+          </button>
+          <button class='btn btn-outline-danger' onClick={props.handleCart}>
+            Cart
           </button>
         </div>
       </nav>
