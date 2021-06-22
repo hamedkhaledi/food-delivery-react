@@ -21,7 +21,7 @@ const Cart = (props) => {
   }
 
   return (
-    <div class='container-all'>
+    <div class='container-all '>
       <div class='container mt-5 mb-5'>
         <CartHeader handleShop={() => handleShop()} />
         <div class='d-flex justify-content-center row'>
