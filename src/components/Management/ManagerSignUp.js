@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import '../../styles/management/signUp.css';
-import { useHistory } from 'react-router-dom';
 import SignUpHeader from '../SignUp/SignUpHeader';
 
 export default function MangerSignUp() {
-  const history = useHistory();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,11 +10,6 @@ export default function MangerSignUp() {
   const [workTime, setWorkTime] = useState('');
   const [preparationTime, setPreparationTime] = useState('');
   const [address, setAddress] = useState('');
-
-  function handleSubmit(event) {
-    let path = '/login';
-    history.push(path);
-  }
 
   return (
     <div class='manager-signup-container'>

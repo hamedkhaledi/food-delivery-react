@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import '../../styles/FoodCart.css';
 
 const CartItem = (props) => {
-  const history = useHistory();
-  const location = useLocation();
   return (
     <div class='d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded'>
       <div class='mr-1'>

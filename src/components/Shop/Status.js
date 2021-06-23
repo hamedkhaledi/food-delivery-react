@@ -3,8 +3,6 @@ import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import '../../styles/Status.css';
 import CartHeader from './Header/CartHeader';
-import User from '../../Model/User';
-import Order from '../../Model/Order';
 
 const Status = (props) => {
   const history = useHistory();

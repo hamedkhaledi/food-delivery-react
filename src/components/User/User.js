@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../../styles/User.css';
 import { useHistory } from 'react-router-dom';
 import CartHeader from '../Shop/Header/CartHeader';
-import Button from 'react-bootstrap/Button';
 
 const User = (props) => {
   const history = useHistory();

@@ -1,6 +1,5 @@
-import { AppBar, Toolbar } from '@material-ui/core';
+
 import '../../styles/ShopHeader.css';
-import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 import React from 'react';
 
