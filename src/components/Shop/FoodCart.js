@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import '../../styles/FoodCart.css';
-import { useHistory } from 'react-router-dom';
 
 const FoodCart = (props) => {
-  const history = useHistory();
-  const location = useLocation();
-
   return (
     <div class='u-container-style u-list-item u-repeater-item u-video-cover u-white u-list-item-3'>
       <div class='u-container-layout u-similar-container u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xl u-container-layout-5'>

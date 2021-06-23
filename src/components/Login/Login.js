@@ -6,6 +6,7 @@ import '../../styles/Login.css';
 import { useHistory } from 'react-router-dom';
 import LoginHeader from './LoginHeader';
 import User from '../../Model/User';
+import Order from '../../Model/Order';
 
 export default function Login() {
   const history = useHistory();
@@ -36,7 +37,7 @@ export default function Login() {
           jsonData.user.name,
           jsonData.user.region,
           jsonData.user.address,
-          [],
+          new Order([], 0, 0, -1),
           jsonData.user.credit
         );
         console.log(user);

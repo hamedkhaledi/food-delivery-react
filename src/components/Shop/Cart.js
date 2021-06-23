@@ -11,12 +11,37 @@ const Cart = (props) => {
   const location = useLocation();
   let currentUser = location.state.currentUser;
 
+  let price = 0;
+  for (let food of currentUser.order.foods) {
+    price += food.price;
+  }
+
   function handleShop() {
     let path = '/shop';
     history.push({
       pathname: path,
       state: { currentUser: currentUser }
     });
+  }
+  function handleSubmit() {
+    let path = '/status';
+    console.log(currentUser);
+    currentUser.credit -= price;
+    currentUser.order.foods = [];
+    currentUser.order.startTime = Date.now().toString();
+    currentUser.order.preparingTime = 20;
+    currentUser.order.status = 0;
+
+    history.push({
+      pathname: path,
+      state: { currentUser: currentUser }
+    });
+  }
+  function validate() {
+    if (currentUser.order.foods.length === 0) {
+      return false;
+    }
+    return true;
   }
 
   return (
@@ -28,12 +53,12 @@ const Cart = (props) => {
             <div class='p-2'>
               <h4 class='text-white'>Shopping cart</h4>
               <div class='d-flex flex-row align-items-center pull-right text-white'>
-                <span class='mr-1'>Sort by:</span>
-                <span class='mr-1 font-weight-bold'>order time</span>
+                <span class='mr-1'>Price:</span>
+                <span class='mr-1 font-weight-bold'>{price}$</span>
                 <i class='fa fa-angle-down'></i>
               </div>
             </div>
-            {currentUser.order.map((food, index) => {
+            {currentUser.order.foods.map((food, index) => {
               return <CartItem food={food} />;
             })}
             <div class='d-flex flex-row align-items-center mt-3 p-2 bg-white rounded'>
@@ -50,6 +75,8 @@ const Cart = (props) => {
               <button
                 class='btn btn-warning btn-block btn-lg ml-2 pay-button'
                 type='button'
+                onClick={handleSubmit}
+                disabled={!validate()}
               >
                 Proceed to Pay
               </button>

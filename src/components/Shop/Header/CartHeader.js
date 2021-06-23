@@ -1,16 +1,7 @@
-import { AppBar, Toolbar } from '@material-ui/core';
 import '../../../styles/ShopHeader.css';
-import Button from 'react-bootstrap/Button';
-import { useHistory } from 'react-router-dom';
 import React from 'react';
 
 export default function Header(props) {
-  const history = useHistory();
-
-  function handleManagement(event) {
-    let path = '/management';
-    history.push(path);
-  }
 
   return (
     <div class='header'>

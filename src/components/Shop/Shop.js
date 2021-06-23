@@ -3,27 +3,23 @@ import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import FoodCart from './FoodCart';
 import ShopHeader from './Header/ShopHeader';
-import Food from '../../Model/Food';
+import Foods from '../../Model/Foods';
 
 const Shop = (props) => {
   const history = useHistory();
   const location = useLocation();
-  const [search, setSearch] = useState('');
   let currentUser = location.state.currentUser;
-  console.log('shop : ' + currentUser.name);
-  // const currentNumber = location.state.currentNumber;
-  // let orderStatus = location.state.orderStatus;
 
-  let imgUrl =
-    'https://media.istockphoto.com/photos/square-crust-flatbread-pizza-picture-id1032111568?s=612x612';
-  let food1 = new Food('1', 'laz', 'rs1', '10', imgUrl);
-  let food2 = new Food('2', 'laz1', 'rs2', '20', imgUrl);
-  let food3 = new Food('3', 'pizza2', 'rs3', '30', imgUrl);
-  let food4 = new Food('4', 'pizza3', 'rs4', '40', imgUrl);
-  let food5 = new Food('4', 'pizza4', 'rs4', '40', imgUrl);
-  let foods = [food1, food2, food3, food4, food5];
+  const [search, setSearch] = useState('');
+  const [firstFood, setFirstFood] = useState(currentUser.order.foods[0]);
 
+  let foods = Foods;
+  console.log('foods : ' + foods);
   function onAddFood(food) {
+    if (firstFood === undefined) {
+      setFirstFood(food);
+    }
+    currentUser.order.foods.push(food);
     //TODO
   }
 
@@ -50,12 +46,21 @@ const Shop = (props) => {
     });
   }
 
+  function handleStatus() {
+    let path = '/status';
+    history.push({
+      pathname: path,
+      state: { currentUser: currentUser }
+    });
+  }
+
   return (
     <div>
       <ShopHeader
         handleCart={() => handleCart()}
         handleProfile={() => handleProfile()}
         handleSignout={() => handleSignout()}
+        handleStatus={() => handleStatus()}
         search={search}
         setSearch={setSearch}
       />
@@ -70,7 +75,9 @@ const Shop = (props) => {
               {foods.map((food, index) => {
                 return (
                   (food.name.includes(search) ||
-                    food.restaurant.includes(search)) && (
+                    food.restaurant.includes(search)) &&
+                  (firstFood === undefined ||
+                    firstFood.restaurant === food.restaurant) && (
                     <FoodCart
                       key={index}
                       food={food}
