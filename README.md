@@ -1,4 +1,4 @@
-# IE final project fronted
+# IE final project Frontend
 
 ## Available Scripts
 
